@@ -1,26 +1,24 @@
 [
   {
-    "name": "Joseph kim",
+    "name": "joseph kim",
     "coolness": 10
   },
   {
-    "name": "Chris Basalo",
-    "coolness": 5
-  },
-  {
+    "name": "Iskander",
+    "coolness": 9
+  },{
     "name": "Pilkyo Kim",
-    "coolness": 6
-  },
-  {
-    "name": "Robert DaSilva",
-    "coolness": 4.9
-  },
-  {
-    "name": "Vrushank Desai",
     "coolness": 7
   },
   {
-    "name": "Alex Lee",
-    "coolness": 0
+    "name": "Vrushank Disghai",
+    "coolness": 8
+  },{
+    "name": "Chris Basalo",
+    "coolness": 2
+  },
+  {
+    "name": "Robert Dasilver",
+    "coolness": 1
   }
 ]

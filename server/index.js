@@ -1,22 +1,14 @@
-//Express Server Stuff
+//Express Stuff
 const express = require('express');
 const cors = require('cors');
 
 //Routes
-const TestDataRoute = require('./routes/testDataRoute.js');
-const router = require('./routes/testDataRoute.js');
+const TestDataRoute = require('./routes/TestDataRoute.js');
 const app = express();
 
-
-app.use(cors);
+app.use(cors());
 app.use(express.json());
 
-router.get('/', (req,res) => {
-  res.json(testData);
-  console.log(testData);
-})
+app.use('/testdata', TestDataRoute);
 
-
-// app.use('/test', TestDataRoute);
-
-app.listen(8081, () => console.log("server revving up ma doode!"));
+app.listen(8081, () => console.log("server reving up ma doode"));
