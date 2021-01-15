@@ -11,14 +11,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function HomePage() {
+function Nominations() {
   const classes = useStyles();
   return (
     <>
       <Container disableGutters='true' maxWidth='false' className={classes.paperContainer}>
-        <Typography variant="h3">Nominations</Typography>
+        <Typography variant="h4">Nominations</Typography>
       </Container>
     </>
   );
 }
-export default HomePage;
+export default Nominations;

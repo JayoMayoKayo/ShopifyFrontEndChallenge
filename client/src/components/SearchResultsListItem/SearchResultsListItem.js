@@ -4,10 +4,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
-import { Grid } from '@material-ui/core';
-
-//Components
-import SearchResultsList from '../SearchResultsList/SearchResultsList.js';
 
 const useStyles = makeStyles((theme) => ({
   paperContainer: {
@@ -15,15 +11,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function SearchResults(movieSearch) {
+function SearchResultsListItem() {
   const classes = useStyles();
   return (
     <>
       <Container disableGutters='true' maxWidth='false' className={classes.paperContainer}>
-        <Typography variant="h4">Search Results</Typography>
-        <SearchResultsList></SearchResultsList>
+        <Typography variant="h4">List Item</Typography>
       </Container>
     </>
   );
 }
-export default SearchResults;
+export default SearchResultsListItem;

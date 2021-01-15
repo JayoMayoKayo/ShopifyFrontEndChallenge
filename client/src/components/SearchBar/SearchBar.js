@@ -4,6 +4,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function HomePage() {
+function SearchBar() {
   const classes = useStyles();
   return (
     <>
@@ -28,4 +29,4 @@ function HomePage() {
     </>
   );
 }
-export default HomePage;
+export default SearchBar;
