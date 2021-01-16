@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 
 function HomePage() {
   //State
-  const [MovieSearch, setMovieSearch] = useState(5);
+  const [movieSearch, setMovieSearch] = useState();
 
   //ComponentDidUpdate the default movie shown when going to the page
   useEffect(() => {
@@ -37,6 +37,7 @@ function HomePage() {
       .then(response => {
         console.log(response.data);
         setMovieSearch(response.data);
+        //Console Logging to test is state is changed
       })
       .catch(error => {
         console.log(error);
@@ -52,8 +53,8 @@ function HomePage() {
         <Grid item xs={12} className={classes.titleMargin}><Typography variant='h4'>The Shoppies</Typography></Grid>
         <Grid item xs={12} className={classes.paperMargin}><Paper><SearchBar /></Paper></Grid>
         <Grid item xs={12} container direction="row" className={classes.paperMargin} spacing={3}>
-          <Grid item xs><Paper><SearchResults MovieSearch={MovieSearch}/></Paper></Grid>
-          <Grid item xs><Paper><Nominations /><p>{console.log(MovieSearch.Search[3])}</p></Paper></Grid>
+          <Grid item xs><Paper><SearchResults movieSearch={movieSearch}></SearchResults></Paper></Grid>
+          <Grid item xs><Paper><Nominations /></Paper></Grid>
         </Grid>
       </Grid>
     </>

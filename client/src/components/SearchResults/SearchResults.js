@@ -15,15 +15,15 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function SearchResults(movieSearch) {
+function SearchResults({ movieSearch }) {
   const classes = useStyles();
   return (
     <>
       <Container disableGutters='true' maxWidth='false' className={classes.paperContainer}>
-        <Typography variant="h4">Search Results</Typography>
+        <Typography variant="h4">Search Results{ movieSearch && console.log(movieSearch.Search[2].Title)}</Typography>
         <SearchResultsList></SearchResultsList>
       </Container>
     </>
   );
 }
-export default SearchResults;
+export default SearchResults; 
