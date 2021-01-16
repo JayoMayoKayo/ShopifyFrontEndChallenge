@@ -20,8 +20,8 @@ function SearchResults({ movieSearch }) {
   return (
     <>
       <Container disableGutters='true' maxWidth='false' className={classes.paperContainer}>
-        <Typography variant="h4">Search Results{ movieSearch && console.log(movieSearch.Search[2].Title)}</Typography>
-        <SearchResultsList></SearchResultsList>
+        <Typography variant="h4">Search Results{console.log(movieSearch)}</Typography>
+        <SearchResultsList movieSearch={movieSearch}></SearchResultsList>
       </Container>
     </>
   );

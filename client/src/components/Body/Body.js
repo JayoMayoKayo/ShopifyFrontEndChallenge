@@ -28,6 +28,7 @@ const useStyles = makeStyles({
 
 function HomePage() {
   //State
+  const [searchName, setSearchName] = useState();
   const [movieSearch, setMovieSearch] = useState();
 
   //ComponentDidUpdate the default movie shown when going to the page
@@ -42,7 +43,17 @@ function HomePage() {
       .catch(error => {
         console.log(error);
       })
-  }, [])
+  }, []);
+
+  //Axios Search Request
+  const movieNameSearch = (movieName) => {
+    axios.get(`http://localhost:8081/defaultmoviesearch/${movieName}`)
+    .then((response) => {
+      console.log(response.data);
+      setMovieSearch(response.data);
+      console.log(movieSearch);
+    })
+  };
 
   //Material UI Styling
   const classes = useStyles();
@@ -51,9 +62,9 @@ function HomePage() {
     <>
       <Grid container direction='column'>
         <Grid item xs={12} className={classes.titleMargin}><Typography variant='h4'>The Shoppies</Typography></Grid>
-        <Grid item xs={12} className={classes.paperMargin}><Paper><SearchBar /></Paper></Grid>
+        <Grid item xs={12} className={classes.paperMargin}><Paper><SearchBar movieNameSearch={movieNameSearch}/></Paper></Grid>
         <Grid item xs={12} container direction="row" className={classes.paperMargin} spacing={3}>
-          <Grid item xs><Paper><SearchResults movieSearch={movieSearch}></SearchResults></Paper></Grid>
+          <Grid item xs><Paper><SearchResults movieSearch={movieSearch} /></Paper></Grid>
           <Grid item xs><Paper><Nominations /></Paper></Grid>
         </Grid>
       </Grid>

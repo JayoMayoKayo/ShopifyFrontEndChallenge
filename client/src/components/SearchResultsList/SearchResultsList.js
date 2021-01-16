@@ -32,33 +32,29 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49),
 ];
 
-function SearchResultsList() {
+function SearchResultsList({ movieSearch }) {
   const classes = useStyles();
+  const resultList = movieSearch;
   return (
     <>
       <Container disableGutters='true' maxWidth='false' className={classes.paperContainer}>
-        <SearchResultsListItem></SearchResultsListItem>
-        <SearchResultsListItem></SearchResultsListItem>
-        <SearchResultsListItem></SearchResultsListItem>
         <TableContainer component={Container} disableGutters={true}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>IMBD Number</TableCell>
+                <TableCell>Movie Name{resultList && console.log(resultList.Search)}</TableCell>
                 <TableCell align="right">IMBD Number</TableCell>
-                <TableCell align="right">IMBD Number</TableCell>
-                <TableCell align="right">IMBD Number</TableCell>
+                <TableCell align="right">Year</TableCell>
+                <TableCell align="right">Type</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
-                <TableRow key={row.name}>
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="right">{row.calories}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
-                  <TableCell align="right">{row.carbs}</TableCell>
+              {resultList && resultList.Search.map((row) => (
+                <TableRow key={row.Title}>
+                  <TableCell component="th" scope="row">{row.Title}</TableCell>
+                  <TableCell align="right">{row.imdbID}</TableCell>
+                  <TableCell align="right">{row.Year}</TableCell>
+                  <TableCell align="right">{row.Type}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

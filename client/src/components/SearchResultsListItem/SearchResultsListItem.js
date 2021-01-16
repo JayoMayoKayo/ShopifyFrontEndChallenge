@@ -16,7 +16,7 @@ function SearchResultsListItem() {
   return (
     <>
       <Container disableGutters='true' maxWidth='false' className={classes.paperContainer}>
-        <Typography variant="h4">List Item</Typography>
+        <Typography variant="h6">List Item</Typography>
       </Container>
     </>
   );
