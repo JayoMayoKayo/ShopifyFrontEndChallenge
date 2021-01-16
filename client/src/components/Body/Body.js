@@ -28,8 +28,8 @@ const useStyles = makeStyles({
 
 function HomePage() {
   //State
-  const [searchName, setSearchName] = useState();
-  const [movieSearch, setMovieSearch] = useState();
+  const [movieSearchResults, setMovieSearchResults] = useState();
+  const [movieName, setMovieName] =useState("dank");
 
   //ComponentDidUpdate the default movie shown when going to the page
   useEffect(() => {
@@ -37,7 +37,7 @@ function HomePage() {
       .get(`http://localhost:8081/defaultmoviesearch`)
       .then(response => {
         console.log(response.data);
-        setMovieSearch(response.data);
+        setMovieSearchResults(response.data);
         //Console Logging to test is state is changed
       })
       .catch(error => {
@@ -46,12 +46,12 @@ function HomePage() {
   }, []);
 
   //Axios Search Request
-  const movieNameSearch = (movieName) => {
-    axios.get(`http://localhost:8081/defaultmoviesearch/${movieName}`)
+  const movieNameSearch = (x) => {
+    axios.get(`http://localhost:8081/defaultmoviesearch/${x}`)
     .then((response) => {
       console.log(response.data);
-      setMovieSearch(response.data);
-      console.log(movieSearch);
+      setMovieSearchResults(response.data);
+      console.log(movieSearchResults);
     })
   };
 
@@ -61,10 +61,12 @@ function HomePage() {
   return (
     <>
       <Grid container direction='column'>
-        <Grid item xs={12} className={classes.titleMargin}><Typography variant='h4'>The Shoppies</Typography></Grid>
-        <Grid item xs={12} className={classes.paperMargin}><Paper><SearchBar movieNameSearch={movieNameSearch}/></Paper></Grid>
+        <Grid item xs={12} className={classes.titleMargin}><Typography variant='h4'>The Shoppies{console.log(movieName)}</Typography></Grid>
+        <Grid item xs={12} className={classes.paperMargin}>
+          <Paper><SearchBar setMovieName={setMovieName}/></Paper>
+        </Grid>
         <Grid item xs={12} container direction="row" className={classes.paperMargin} spacing={3}>
-          <Grid item xs><Paper><SearchResults movieSearch={movieSearch} /></Paper></Grid>
+          <Grid item xs><Paper><SearchResults movieName={movieName} movieSearchResults={movieSearchResults} /></Paper></Grid>
           <Grid item xs><Paper><Nominations /></Paper></Grid>
         </Grid>
       </Grid>

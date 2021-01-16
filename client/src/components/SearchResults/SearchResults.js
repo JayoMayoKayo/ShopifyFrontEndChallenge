@@ -15,13 +15,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function SearchResults({ movieSearch }) {
+function SearchResults(props) {
   const classes = useStyles();
+
+  const movieSearchResults = props.movieSearchResults;
+  const movieName = props.movieName;
+
   return (
     <>
       <Container disableGutters='true' maxWidth='false' className={classes.paperContainer}>
-        <Typography variant="h4">Search Results{console.log(movieSearch)}</Typography>
-        <SearchResultsList movieSearch={movieSearch}></SearchResultsList>
+        <Typography variant="h4">Search Results</Typography>
+        <SearchResultsList movieName={movieName} movieSearchResults={movieSearchResults}></SearchResultsList>
       </Container>
     </>
   );
