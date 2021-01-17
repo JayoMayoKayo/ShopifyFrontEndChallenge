@@ -25,7 +25,7 @@ function SearchResults(props) {
   return (
     <>
       <Container disableGutters='true' maxWidth='false' className={classes.paperContainer}>
-        <Typography variant="h4">Search Results</Typography>
+        <Typography variant="h4">Search Results for {props.movieName}</Typography>
         <SearchResultsList movieName={movieName} setMovieSearchResults={setMovieSearchResults} movieSearchResults={movieSearchResults}></SearchResultsList>
       </Container>
     </>

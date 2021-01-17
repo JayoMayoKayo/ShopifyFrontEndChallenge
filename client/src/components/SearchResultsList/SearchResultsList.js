@@ -31,7 +31,6 @@ function SearchResultsList(props) {
   const setMovieSearchResults = props.setMovieSearchResults;
   
   const testFunction = (x) => {
-    console.log(resultList.Search);
     return (
       <>
         {resultList.Search.map((row) => (

@@ -45,12 +45,12 @@ function SearchBar(props) {
   const searchMovieName = debounce((nameInput) => {
     {
       if (nameInput === '') {
-      console.log("it worked!");
       setMovieSearchResults(stockResult);
-      console.log(movieSearchResults);
+      setMovieName("...");
       return;
       }
       setMovieSearchResults(stockResult);
+      setMovieName(nameInput);
       movieNameSearch(nameInput);
     }
   },2000);
@@ -63,7 +63,7 @@ function SearchBar(props) {
             id="outlined-basic" 
             label='Type in a movie or imbd number...(ram is example)' 
             variant='outlined' 
-            onChange={(e) => {searchMovieName(e.target.value); console.log(e.target.value);}}
+            onChange={(e) => {searchMovieName(e.target.value)}}
           />
         </form>
       </Container>
