@@ -1,4 +1,8 @@
+//React
 import React from 'react';
+
+//Axios Api Promises
+import axios from 'axios';
 
 //Material Ui Components
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,8 +23,10 @@ const useStyles = makeStyles((theme) => ({
 
 function SearchResultsList(props) {
   const classes = useStyles();
-  const resultList = props.movieSearchResults;
   
+  const resultList = props.movieSearchResults;
+  const movieName = props.movieName;
+
   return (
     <>
       <Container disableGutters='true' maxWidth='false' className={classes.paperContainer}>
@@ -28,7 +34,7 @@ function SearchResultsList(props) {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Movie Name{resultList && console.log(resultList.Search)}</TableCell>
+                <TableCell>Movie Name</TableCell>
                 <TableCell align="right">IMBD Number</TableCell>
                 <TableCell align="right">Year</TableCell>
                 <TableCell align="right">Type</TableCell>

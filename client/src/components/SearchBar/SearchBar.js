@@ -24,11 +24,17 @@ const useStyles = makeStyles((theme) => ({
 
 function SearchBar(props) {
   const classes = useStyles();
-  const setMovieName = props.setMovieName;
+  
   const movieNameSearch = props.movieNameSearch;
+  const setMovieName = props.setMovieName;
 
-  const changeMovieName = debounce((inputValue) => {
-    setMovieName(inputValue);
+  const searchMovieName = debounce((nameInput) => {
+    {if (nameInput === "") {
+      console.log("it worked!")
+      return;
+    }
+    setMovieName('');
+    movieNameSearch(nameInput);}
   },1000);
 
   return (
@@ -39,7 +45,7 @@ function SearchBar(props) {
             id="outlined-basic" 
             label='Type in a movie or imbd number...(ram is example)' 
             variant='outlined' 
-            onChange={(e) => {changeMovieName(e.target.value)}}
+            onChange={(e) => {searchMovieName(e.target.value); console.log(e.target.value);}}
           />
         </form>
       </Container>

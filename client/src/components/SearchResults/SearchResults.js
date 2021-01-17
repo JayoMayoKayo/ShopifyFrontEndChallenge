@@ -18,9 +18,9 @@ const useStyles = makeStyles((theme) => ({
 function SearchResults(props) {
   const classes = useStyles();
 
-  const movieSearchResults = props.movieSearchResults;
   const movieName = props.movieName;
-
+  const movieSearchResults = props.movieSearchResults;
+  
   return (
     <>
       <Container disableGutters='true' maxWidth='false' className={classes.paperContainer}>
