@@ -30,22 +30,12 @@ function SearchResultsList(props) {
   const movieName = props.movieName;
   const setMovieSearchResults = props.setMovieSearchResults;
   
-  const stockResult = {
-    "Search": [{
-      "Title": "Waiting...",
-      "imdbID": "Waiting...",
-      "Year": "Waiting...",
-      "Type": "Waiting...",
-    }],
-    "totalResults": "",
-    "Response": ""
-  };
-
   const testFunction = (x) => {
+    console.log(resultList.Search);
     return (
       <>
         {resultList.Search.map((row) => (
-          <TableRow key={row.Title}>
+          <TableRow key={row.imdbID}>
             <TableCell component="th" scope="row">{row.Title}</TableCell>
             <TableCell align="right">{row.imdbID}</TableCell>
             <TableCell align="right">{row.Year}</TableCell>
@@ -64,7 +54,6 @@ function SearchResultsList(props) {
           <Table>
             <TableHead>
               <TableRow>
-                {console.log(resultList)}
                 <TableCell>Movie Name</TableCell>
                 <TableCell align="right">IMBD Number</TableCell>
                 <TableCell align="right">Year</TableCell>

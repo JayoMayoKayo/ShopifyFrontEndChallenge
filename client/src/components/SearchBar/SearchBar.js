@@ -43,18 +43,17 @@ function SearchBar(props) {
   };
 
   const searchMovieName = debounce((nameInput) => {
-    {if (nameInput === '') {
+    {
+      if (nameInput === '') {
       console.log("it worked!");
       setMovieSearchResults(stockResult);
       console.log(movieSearchResults);
-      console.log("did it worked!");
       return;
+      }
+      setMovieSearchResults(stockResult);
+      movieNameSearch(nameInput);
     }
-    setMovieSearchResults(stockResult);
-    console.log("checking movie name!");
-    console.log(movieName);
-    movieNameSearch(nameInput);}
-  },1000);
+  },2000);
 
   return (
     <>

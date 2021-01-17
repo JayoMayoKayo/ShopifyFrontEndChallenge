@@ -40,6 +40,17 @@ function HomePage() {
   });
   const [movieName, setMovieName] =useState("dank");
 
+  const blankResults = {
+    "Search": [{
+      "Title": "Waiting...",
+      "imdbID": "Waiting...",
+      "Year": "Waiting...",
+      "Type": "Waiting...",
+    }],
+    "totalResults": "",
+    "Response": ""
+  };
+
   //ComponentDidUpdate the default movie shown when going to the page
   useEffect(() => {
     axios
@@ -56,6 +67,7 @@ function HomePage() {
   const movieNameSearch = (x) => {
     axios.get(`http://localhost:8081/moviesearch/${x}`)
     .then((response) => {
+      console.log(movieSearchResults);
       setMovieSearchResults(response.data);
     })
     .catch(error => {
