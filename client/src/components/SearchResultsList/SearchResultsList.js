@@ -4,6 +4,8 @@ import React from 'react';
 //Axios Api Promises
 import axios from 'axios';
 
+import debounce, { result } from 'lodash';
+
 //Material Ui Components
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
@@ -26,6 +28,34 @@ function SearchResultsList(props) {
   
   const resultList = props.movieSearchResults;
   const movieName = props.movieName;
+  const setMovieSearchResults = props.setMovieSearchResults;
+  
+  const stockResult = {
+    "Search": [{
+      "Title": "Waiting...",
+      "imdbID": "Waiting...",
+      "Year": "Waiting...",
+      "Type": "Waiting...",
+    }],
+    "totalResults": "",
+    "Response": ""
+  };
+
+  const testFunction = (x) => {
+    return (
+      <>
+        {resultList.Search.map((row) => (
+          <TableRow key={row.Title}>
+            <TableCell component="th" scope="row">{row.Title}</TableCell>
+            <TableCell align="right">{row.imdbID}</TableCell>
+            <TableCell align="right">{row.Year}</TableCell>
+            <TableCell align="right">{row.Type}</TableCell>
+          </TableRow>
+        ))}
+      </>
+    );
+  };
+
 
   return (
     <>
@@ -34,6 +64,7 @@ function SearchResultsList(props) {
           <Table>
             <TableHead>
               <TableRow>
+                {console.log(resultList)}
                 <TableCell>Movie Name</TableCell>
                 <TableCell align="right">IMBD Number</TableCell>
                 <TableCell align="right">Year</TableCell>
@@ -41,14 +72,15 @@ function SearchResultsList(props) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {resultList && resultList.Search.map((row) => (
+{/*               {resultList.Search.map((row) => (
                 <TableRow key={row.Title}>
                   <TableCell component="th" scope="row">{row.Title}</TableCell>
                   <TableCell align="right">{row.imdbID}</TableCell>
                   <TableCell align="right">{row.Year}</TableCell>
                   <TableCell align="right">{row.Type}</TableCell>
                 </TableRow>
-              ))}
+              ))} */}
+              {testFunction(resultList)}
             </TableBody>
           </Table>
         </TableContainer>

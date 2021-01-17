@@ -26,14 +26,33 @@ function SearchBar(props) {
   const classes = useStyles();
   
   const movieNameSearch = props.movieNameSearch;
+  const movieSearchResults = props.movieSearchResults;
+  const setMovieSearchResults = props.setMovieSearchResults;
+  const movieName = props.movieName;
   const setMovieName = props.setMovieName;
 
+  const stockResult = {
+    "Search": [{
+      "Title": "Waiting...",
+      "imdbID": "Waiting...",
+      "Year": "Waiting...",
+      "Type": "Waiting...",
+    }],
+    "totalResults": "",
+    "Response": ""
+  };
+
   const searchMovieName = debounce((nameInput) => {
-    {if (nameInput === "") {
-      console.log("it worked!")
+    {if (nameInput === '') {
+      console.log("it worked!");
+      setMovieSearchResults(stockResult);
+      console.log(movieSearchResults);
+      console.log("did it worked!");
       return;
     }
-    setMovieName('');
+    setMovieSearchResults(stockResult);
+    console.log("checking movie name!");
+    console.log(movieName);
     movieNameSearch(nameInput);}
   },1000);
 

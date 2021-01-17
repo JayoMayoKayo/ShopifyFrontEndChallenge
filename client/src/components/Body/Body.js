@@ -28,7 +28,16 @@ const useStyles = makeStyles({
 
 function HomePage() {
   //State
-  const [movieSearchResults, setMovieSearchResults] = useState();
+  const [movieSearchResults, setMovieSearchResults] = useState({
+    "Search": [{
+      "Title": "Waiting...",
+      "imdbID": "Waiting...",
+      "Year": "Waiting...",
+      "Type": "Waiting...",
+    }],
+    "totalResults": "",
+    "Response": ""
+  });
   const [movieName, setMovieName] =useState("dank");
 
   //ComponentDidUpdate the default movie shown when going to the page
@@ -49,6 +58,9 @@ function HomePage() {
     .then((response) => {
       setMovieSearchResults(response.data);
     })
+    .catch(error => {
+      console.log(error);
+    })
   };
 
   //Material UI Styling
@@ -62,6 +74,9 @@ function HomePage() {
           <Paper>
             <SearchBar 
               movieNameSearch={movieNameSearch}
+              movieSearchResults = {movieSearchResults} 
+              setMovieSearchResults={setMovieSearchResults}
+              movieName={movieName}
               setMovieName={setMovieName} 
               />
           </Paper>
@@ -70,7 +85,8 @@ function HomePage() {
           <Grid item xs>
             <Paper>
               <SearchResults 
-                movieName={movieName} 
+                movieName={movieName}
+                setMovieSearchResults = {setMovieSearchResults} 
                 movieSearchResults={movieSearchResults} 
               />
             </Paper>

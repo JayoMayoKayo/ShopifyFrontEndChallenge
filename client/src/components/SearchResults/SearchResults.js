@@ -19,13 +19,14 @@ function SearchResults(props) {
   const classes = useStyles();
 
   const movieName = props.movieName;
+  const setMovieSearchResults = props.setMovieSearchResults;
   const movieSearchResults = props.movieSearchResults;
   
   return (
     <>
       <Container disableGutters='true' maxWidth='false' className={classes.paperContainer}>
         <Typography variant="h4">Search Results</Typography>
-        <SearchResultsList movieName={movieName} movieSearchResults={movieSearchResults}></SearchResultsList>
+        <SearchResultsList movieName={movieName} setMovieSearchResults={setMovieSearchResults} movieSearchResults={movieSearchResults}></SearchResultsList>
       </Container>
     </>
   );
