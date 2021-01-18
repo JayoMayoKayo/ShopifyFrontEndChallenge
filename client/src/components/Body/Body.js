@@ -90,6 +90,33 @@ function HomePage() {
     })
   };
 
+  //Axios Select Nominations
+  const addNominations = (x) => {
+    axios.post(`http://localhost:8081/nominations`, {
+      "Title": x.Title,
+      "Year": x.Year,
+      "imdbID": x.imdbID,
+      "Type": x.Type,
+      "Poster": x.Poster,
+    })
+    .then((response) => {
+      console.log(response.data.Title);
+      const newMovieAddition = {
+        "Title": response.data.Title,
+        "Year": response.data.Year,
+        "imdbID": response.data.imdbID,
+        "Type": response.data.Type,
+        "Poster": response.data.Poster,
+      }
+      nominationList.Search.push(newMovieAddition);
+      getNominationList();
+      console.log(nominationList);
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }; 
+
   //Material UI Styling
   const classes = useStyles();
 
@@ -115,6 +142,7 @@ function HomePage() {
                 movieName={movieName}
                 setMovieSearchResults = {setMovieSearchResults} 
                 movieSearchResults={movieSearchResults} 
+                addNominations={addNominations}
               />
             </Paper>
           </Grid>

@@ -19,9 +19,7 @@ router.post('/', (serverReq, serverRes) => {
     "Type": serverReq.body.Type,
     "Poster": serverReq.body.Poster,
   };
-
-  nominationsData.Search.push(newNomination);
-  serverRes.json(nominationsData);  
+  nominationsData.Search.push(newNomination); 
 });
 
 

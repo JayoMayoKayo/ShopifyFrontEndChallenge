@@ -28,6 +28,7 @@ function SearchResultsList(props) {
   const classes = useStyles();
   
   const resultList = props.movieSearchResults;
+  const addNominations = props.addNominations;
   
   const testFunction = (x) => {
     return (
@@ -39,7 +40,11 @@ function SearchResultsList(props) {
             <TableCell align="right">{row.Year}</TableCell>
             <TableCell align="right">{row.Type}</TableCell>
             <TableCell>
-              <Button variant='contained' color='primary'>
+              <Button 
+                variant='contained' 
+                color='primary'
+                onClick={() => addNominations(row)}
+              >
                 <Typography variant='subtitle2'>Add</Typography>
                 </Button>
             </TableCell>

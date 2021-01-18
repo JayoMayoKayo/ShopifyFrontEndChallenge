@@ -10,7 +10,7 @@ const OMDbApi = 'http://www.omdbapi.com/?apikey=9f463311&s=ram';
 router.get('/', (serverReq, serverRes) => {
   axios.get(OMDbApi)
   .then(response => {
-    console.log(response.data.Search);
+    //console.log(response.data.Search);
     serverRes.json(response.data);
   })
   .catch(err => {

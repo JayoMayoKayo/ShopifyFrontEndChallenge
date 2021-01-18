@@ -21,12 +21,16 @@ function SearchResults(props) {
   const movieName = props.movieName;
   const setMovieSearchResults = props.setMovieSearchResults;
   const movieSearchResults = props.movieSearchResults;
+  const addNominations = props.addNominations;
   
   return (
     <>
       <Container disableGutters='true' maxWidth='false' className={classes.paperContainer}>
         <Typography variant="h4">Search Results for {props.movieName}</Typography>
-        <SearchResultsList movieName={movieName} setMovieSearchResults={setMovieSearchResults} movieSearchResults={movieSearchResults}></SearchResultsList>
+        <SearchResultsList 
+          movieSearchResults={movieSearchResults}
+          addNominations={addNominations}
+        />
       </Container>
     </>
   );
