@@ -40,7 +40,7 @@ function SearchResultsList(props) {
             <TableCell align="right">{row.Type}</TableCell>
             <TableCell>
               <Button variant='contained' color='primary'>
-                <Typography variant='subtitle2'>{row.Year}</Typography>
+                <Typography variant='subtitle2'>Add</Typography>
                 </Button>
             </TableCell>
           </TableRow>

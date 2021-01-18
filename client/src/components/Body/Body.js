@@ -55,6 +55,13 @@ function HomePage() {
   //ComponentDidUpdate the default movie shown when going to the page
   useEffect(() => {
     getNominationList();
+    axios.get(`http://localhost:8081/defaultmoviesearch`)
+    .then((response) => {
+      setMovieSearchResults(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }, []);
 
   //Axios Search Request
