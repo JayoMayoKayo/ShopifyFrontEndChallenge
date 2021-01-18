@@ -22,5 +22,9 @@ router.post('/', (serverReq, serverRes) => {
   nominationsData.Search.push(newNomination); 
 });
 
+router.delete('/:movie', (serverReq, serverRes) => {
+  console.log(serverReq.params.movie);
+})
+
 
 module.exports = router;
