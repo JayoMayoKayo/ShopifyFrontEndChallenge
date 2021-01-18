@@ -39,6 +39,7 @@ function HomePage() {
     "Response": ""
   });
   const [movieName, setMovieName] =useState("ram");
+  const [nominationList, setNominationList] = useState('');
 
   const errorResult = {
     "Search": [{
@@ -53,14 +54,7 @@ function HomePage() {
 
   //ComponentDidUpdate the default movie shown when going to the page
   useEffect(() => {
-    axios
-      .get(`http://localhost:8081/defaultmoviesearch`)
-      .then(response => {
-        setMovieSearchResults(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      })
+    getNominationList();
   }, []);
 
   //Axios Search Request
@@ -72,6 +66,17 @@ function HomePage() {
         return;
       }
       setMovieSearchResults(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  };
+
+  //Axios Nominations Request
+  const getNominationList = () => {
+    axios.get(`http://localhost:8081/nominations`)
+    .then((response) => {
+      setNominationList(response.data);
     })
     .catch(error => {
       console.log(error);
@@ -106,7 +111,14 @@ function HomePage() {
               />
             </Paper>
           </Grid>
-          <Grid item xs><Paper><Nominations /></Paper></Grid>
+          <Grid item xs>
+            <Paper>
+              <Nominations 
+                nominationList={nominationList}
+                setNominationList={setNominationList}
+              />
+            </Paper>
+          </Grid>
         </Grid>
       </Grid>
     </>

@@ -53,7 +53,7 @@ function SearchBar(props) {
       setMovieName(nameInput);
       movieNameSearch(nameInput);
     }
-  },2000);
+  },1000);
 
   return (
     <>

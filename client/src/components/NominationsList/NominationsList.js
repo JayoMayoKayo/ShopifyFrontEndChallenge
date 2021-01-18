@@ -1,11 +1,6 @@
 //React
 import React from 'react';
 
-//Axios Api Promises
-import axios from 'axios';
-
-import debounce, { result } from 'lodash';
-
 //Material Ui Components
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
@@ -24,12 +19,28 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function SearchResultsList(props) {
+function NominationList(props) {
   const classes = useStyles();
-  
-  const resultList = props.movieSearchResults;
-  
-  const testFunction = (x) => {
+  const nominationList = props.nominationList;
+  const setNominationList = props.setNominationList;
+
+  const stockResult = {
+    "Search": [{
+      "Title": "Waiting...",
+      "imdbID": "Waiting...",
+      "Year": "Waiting...",
+      "Type": "Waiting...",
+    }],
+    "totalResults": "",
+    "Response": ""
+  };
+
+  const nominationData = (x) => {
+    if (x === '') {
+      setNominationList(stockResult);
+      return;
+    }
+    setNominationList(x);
     return (
       <>
         {x.Search.map((row) => (
@@ -46,9 +57,8 @@ function SearchResultsList(props) {
           </TableRow>
         ))}
       </>
-    );
+    )
   };
-
 
   return (
     <>
@@ -65,7 +75,7 @@ function SearchResultsList(props) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {testFunction(resultList)}
+              {nominationData(nominationList)}
             </TableBody>
           </Table>
         </TableContainer>
@@ -73,4 +83,4 @@ function SearchResultsList(props) {
     </>
   );
 }
-export default SearchResultsList;
+export default NominationList;
